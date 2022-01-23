@@ -226,8 +226,8 @@ function appMenu() {
         },
 
         type: "input",
-        name: "internGithub",
-        message: "What is the intern's Github?",
+        name: "internSchool",
+        message: "What is the intern's school?",
         validate: answer => {
           if (answer !== "") {
             return true;
@@ -243,7 +243,7 @@ function appMenu() {
         answers.internName,
         answers.internId,
         answers.internEmail,
-        answers.internGithub
+        answers.internSchool
       );
       // TODO: YOUR CODE HERE
       // add the intern object to teamMembers
