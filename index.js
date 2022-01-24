@@ -120,53 +120,58 @@ function appMenu() {
 
   function addEngineer() {
     inquirer.prompt([
-      {
       // TODO: YOUR CODE HERE
       // prompt questions to user
-      type: "input",
-      name: "engineerName",
-      message: "What is the engineer's name?",
-      validate: answer => {
+      {
+        type: "input",
+        name: "engineerName",
+        message: "What is the engineer's name?",
+        validate: answer => {
         if (answer !== "") {
           return true;
         }
         return "Please input at least one character"
-      },
-      type: "input",
-      name: "engineerId",
-      message: "What is the engineer's ID?",
-      validate: answer => {
-        const pass = answer.match (
-          /^[1-9]\d*$/
-        );
-        if (pass) {
-          return true;
         }
-        return "Please enter a positive number greater than zero";
       },
-      type: "input",
-      name: "engineerEmail",
-      message: "What is the engineer's email?",
-      validate: answer => {
-        const pass = answer.match (
-          /\$+@\$+\.\$+/
-        );
-        if (pass) {
-          return true;
+      {
+        type: "input",
+        name: "engineerId",
+        message: "What is the engineer's ID?",
+        validate: answer => {
+          const pass = answer.match (
+            /^[1-9]\d*$/
+          );
+          if (pass) {
+            return true;
+          }
+          return "Please enter a positive number greater than zero";
         }
-        return "Please input a valid email"
+        },
+      {
+        type: "input",
+        name: "engineerEmail",
+        message: "What is the engineer's email?",
+        validate: answer => {
+          const pass = answer.match (
+            /\S+@\S+\.\S+/
+          );
+          if (pass) {
+            return true;
+          }
+          return "Please input a valid email"
+        }
       },
-
-      type: "input",
-      name: "engineerGithub",
-      message: "What is the engineer's Github?",
-      validate: answer => {
-        if (answer !== "") {
-          return true;
-        }
-        return "Please input at least one character";
+      {
+        type: "input",
+        name: "engineerGithub",
+        message: "What is the engineer's Github?",
+        validate: answer => {
+          if (answer !== "") {
+            return true;
+          }
+          return "Please input at least one character";
+        },
       }
-    }
     ]).then(answers => {
       // TODO: YOUR CODE HERE
       // create an engineer object from class Engineer
@@ -200,6 +205,8 @@ function appMenu() {
           }
           return "Please input at least one character"
         },
+      },
+      {
         type: "input",
         name: "internId",
         message: "What is the intern's ID?",
@@ -211,20 +218,23 @@ function appMenu() {
             return true;
           }
           return "Please enter a positive number greater than zero";
+          }
         },
+      {
         type: "input",
         name: "internEmail",
         message: "What is the intern's email?",
         validate: answer => {
           const pass = answer.match (
-            /\$+@\$+\.\$+/
+            /\S+@\S+\.\S+/
           );
           if (pass) {
             return true;
           }
           return "Please input a valid email"
+          }
         },
-
+      {
         type: "input",
         name: "internSchool",
         message: "What is the intern's school?",
@@ -235,6 +245,7 @@ function appMenu() {
           return "Please input at least one character";
         }
       }
+    
 
     ]).then(answers => {
       // TODO: YOUR CODE HERE
